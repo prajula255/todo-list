@@ -1,8 +1,8 @@
 import React from 'react'
-function TextInput({ onChange }) {
+function TextInput({ onChange,value }) {
     return (
         <>
-            <input className='form-control' type="text" onChange={onChange} />
+            <input className='form-control' type="text" onChange={onChange} value={value} />
         </>
     );
 
