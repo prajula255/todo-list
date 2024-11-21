@@ -7,7 +7,7 @@ import TextInput from './components/text-input';
 function App() {
   const [todo, setTodo] = useState([])
   const [input, setInput] = useState("")
-
+  const [completedTodo, setCompletedTodo] = useState([])
   function handleAdd() {
     setTodo([...todo, input])
     setInput("")
@@ -15,6 +15,12 @@ function App() {
 
   function handleDelete(index) {
     const newArray = todo.filter((_, i) => i !== index)
+    setTodo(newArray)
+  }
+
+  function handleDone(index) {
+    const newArray = todo.filter((_, i) => i !== index)
+    setCompletedTodo([...completedTodo, todo[index]])
     setTodo(newArray)
   }
   return (
@@ -29,6 +35,24 @@ function App() {
           todo.length > 0 ?
             todo.map((item, index) => (
               <div className="col-2 p-2" >
+                <Card key={index} todo={item} onDelete={() => handleDelete(index)} onDone={() => handleDone(index)} />
+              </div>
+            )) :
+            (
+              <div>
+                <p>nothing to show</p>
+              </div>
+            )
+        }
+
+      </div>
+
+      <p>completed task</p>
+      <div className="mt-4 grid row ">
+        {
+          completedTodo.length > 0 ?
+            completedTodo.map((item, index) => (
+              <div className="col-2 p-2" >
                 <Card key={index} todo={item} onDelete={() => handleDelete(index)} />
               </div>
             )) :
@@ -40,6 +64,7 @@ function App() {
         }
 
       </div>
+
     </div>
   );
 }
