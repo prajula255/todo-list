@@ -8,6 +8,7 @@ function App() {
   const [todo, setTodo] = useState([])
   const [input, setInput] = useState("")
   const [completedTodo, setCompletedTodo] = useState([])
+
   function handleAdd() {
     setTodo([...todo, input])
     setInput("")
@@ -23,6 +24,13 @@ function App() {
     setCompletedTodo([...completedTodo, todo[index]])
     setTodo(newArray)
   }
+
+
+  function handleCompletedtask(index) {
+    const newDelete = todo.filter((_, i) => i !== index)
+    setCompletedTodo(newDelete)
+  }
+
   return (
     <div className="container">
       <Heading1 value={"Todo list"} className="text-center" />
@@ -53,7 +61,7 @@ function App() {
           completedTodo.length > 0 ?
             completedTodo.map((item, index) => (
               <div className="col-2 p-2" >
-                <Card key={index} todo={item} onDelete={() => handleDelete(index)} />
+                <Card key={index} todo={item} onDelete={() => handleCompletedtask(index)} />
               </div>
             )) :
             (
@@ -64,8 +72,8 @@ function App() {
         }
 
       </div>
-
     </div>
+
   );
 }
 
