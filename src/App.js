@@ -27,7 +27,8 @@ function App() {
 
 
   function handleCompletedtask(index) {
-    const newDelete = todo.filter((_, i) => i !== index)
+    const newDelete = completedTodo.filter((_, i) => i !== index)
+    console.log(newDelete)
     setCompletedTodo(newDelete)
   }
 
@@ -39,6 +40,7 @@ function App() {
         <Button label={"Add"} onClick={handleAdd} />
       </div>
       <div className="mt-4 grid row text-secondary">
+        <p>Task todo</p>
         {
           todo.length > 0 ?
             todo.map((item, index) => (
@@ -55,10 +57,9 @@ function App() {
 
       </div>
 
-
       <div className="mt-4 grid row text-danger ">
         <p>completed task</p></div>
-      <div className="mt-4 grid row text-primary ">
+      <div className="mt-4 grid row text-primary  ">
         {
           completedTodo.length > 0 ?
             completedTodo.map((item, index) => (
