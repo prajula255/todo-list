@@ -38,12 +38,12 @@ function App() {
         <TextInput value={input} onChange={(e) => setInput(e.target.value)} />
         <Button label={"Add"} onClick={handleAdd} />
       </div>
-      <div className="mt-4 grid row ">
+      <div className="mt-4 grid row text-secondary">
         {
           todo.length > 0 ?
             todo.map((item, index) => (
               <div className="col-2 p-2" >
-                <Card key={index} todo={item} onDelete={() => handleDelete(index)} onDone={() => handleDone(index)} />
+                <Card key={index + "todo"} todo={item} onDelete={() => handleDelete(index)} onDone={() => handleDone(index)} />
               </div>
             )) :
             (
@@ -55,13 +55,15 @@ function App() {
 
       </div>
 
-      <p>completed task</p>
-      <div className="mt-4 grid row ">
+
+      <div className="mt-4 grid row text-danger ">
+        <p>completed task</p></div>
+      <div className="mt-4 grid row text-primary ">
         {
           completedTodo.length > 0 ?
             completedTodo.map((item, index) => (
               <div className="col-2 p-2" >
-                <Card key={index} todo={item} onDelete={() => handleCompletedtask(index)} />
+                <Card key={index + "completedtodo"} todo={item} onDelete={() => handleCompletedtask(index)} />
               </div>
             )) :
             (
