@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="container">
       <Heading1 value={"Todo list"} className="text-center" />
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 ">
         <TextInput value={input} onChange={(e) => setInput(e.target.value)} />
         <Button label={"Add"} onClick={handleAdd} />
       </div>
@@ -49,7 +49,7 @@ function App() {
               </div>
             )) :
             (
-              <div>
+              <div className='text-success'>
                 <p>nothing to show</p>
               </div>
             )
